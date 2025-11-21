@@ -42,19 +42,19 @@
 <body>
     <header class="header">
         <div class="container">
-            <div class="logo">
+            <a href="{{ url_for('index') }}" class="logo">
                 <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Premium Windows & Doors">
-            </div>
+            </a>
             <div class="search-bar" style="display: none;">
                 <input type="text" placeholder="Search for home improvement products">
                 <i class="fas fa-search"></i>
             </div>
             <div class="header-right">
                 <a href="tel:07532721934" class="phone-link">
-                    <i class="fas fa-phone"></i>
+                    <i class="fas fa-phone-alt"></i>
                     <span>07532721934</span>
                 </a>
-                <a href="#home" class="btn btn-primary">Get a Price</a>
+                <a href="#home" class="btn btn-primary btn-sm">Get a Price</a>
                 <div class="mobile-menu-btn">
                     <span></span>
                     <span></span>
@@ -65,8 +65,16 @@
         <nav class="nav">
             <ul>
                 <li><a href="#home">Home</a></li>
+                <li class="dropdown">
+                    <a href="#products" class="dropdown-toggle">Products <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('windows') }}">Windows</a></li>
+                        <li><a href="{{ url_for('doors') }}">Doors</a></li>
+                        <li><a href="{{ url_for('conservatories') }}">Conservatories</a></li>
+                        <li><a href="{{ url_for('rooflights') }}">Roof Lights</a></li>
+                    </ul>
+                </li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#products">Products</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -384,99 +392,14 @@
     </footer>
 
     <div class="floating-buttons">
-        <a href="https://wa.me/447532721934" class="whatsapp-btn" target="_blank">
+        <a href="https://wa.me/447532721934" class="whatsapp-btn" target="_blank" aria-label="WhatsApp Us">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="mailto:affordableglazingsys@gmail.com" class="email-btn">
+        <a href="mailto:affordableglazingsys@gmail.com" class="email-btn" aria-label="Email Us">
             <i class="fas fa-envelope"></i>
         </a>
     </div>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const nav = document.querySelector('.nav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            
-            // Animate hamburger icon
-            const spans = mobileMenuBtn.querySelectorAll('span');
-            if (nav.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
-
-        // Testimonial Slider
-        const testimonials = document.querySelectorAll('.testimonial');
-        const dots = document.querySelectorAll('.dot');
-        let currentSlide = 0;
-
-        function showSlide(n) {
-            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            currentSlide = (n + testimonials.length) % testimonials.length;
-            
-            testimonials[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-        }
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-            });
-        });
-
-        // Auto slide testimonials
-        setInterval(() => {
-            showSlide(currentSlide + 1);
-        }, 5000);
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.padding = '10px 0';
-                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.padding = '15px 0';
-                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (nav.classList.contains('active')) {
-                        nav.classList.remove('active');
-                        const spans = mobileMenuBtn.querySelectorAll('span');
-                        spans[0].style.transform = 'none';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'none';
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

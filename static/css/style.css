@@ -1,4 +1,4 @@
-  /* Reset and Base Styles */
+/* Reset and Base Styles */
     * {
       margin: 0;
       padding: 0;
@@ -28,7 +28,7 @@
       line-height: 1.6;
       color: var(--text-color);
       overflow-x: hidden;
-      padding-top: 0;
+      /* padding-top is managed by JavaScript for accuracy */
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -87,6 +87,11 @@
       box-shadow: var(--shadow);
     }
 
+    .btn-sm {
+        padding: 8px 15px; /* Smaller button for mobile header */
+        font-size: 0.9rem;
+    }
+
     /* Header */
     .header {
       position: fixed;
@@ -130,22 +135,40 @@
       color: var(--secondary-color);
     }
 
+    /* Mobile Menu Button */
     .mobile-menu-btn {
       display: flex;
       flex-direction: column;
       cursor: pointer;
       width: 30px;
-      height: 30px;
+      height: 20px; /* Reduced height for better look */
       justify-content: space-between;
+      padding: 2px 0;
     }
 
     .mobile-menu-btn span {
       width: 100%;
-      height: 3px;
+      height: 2px; /* Thinner lines for better look */
       background-color: var(--dark-color);
       transition: var(--transition);
+      transform-origin: left center; /* For better animation */
     }
 
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg);
+        width: 120%; /* Extend slightly */
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg);
+        width: 120%; /* Extend slightly */
+    }
+
+    /* Navigation */
     .nav {
       position: absolute;
       top: 100%;
@@ -163,13 +186,14 @@
 
     .nav ul {
       list-style: none;
-      padding: 20px 0;
+      padding: 0; /* Changed from 20px 0 to 0 */
     }
 
     .nav ul li {
       margin: 0;
       text-align: center;
       border-bottom: 1px solid #eee;
+      position: relative; /* For dropdown */
     }
 
     .nav ul li:last-child {
@@ -190,13 +214,53 @@
       color: var(--secondary-color);
     }
 
+    /* Dropdown Styles for Mobile */
+    .dropdown .dropdown-toggle i {
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+    }
+
+    /* DEFAULT: HIDE DROPDOWN MENU */
+    .dropdown-menu {
+        display: none;
+        list-style: none;
+        background-color: #f8f9fa; /* Slightly different background */
+        padding: 0;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .dropdown-menu.active {
+        display: block;
+    }
+
+    .dropdown-menu li {
+        border-bottom: 1px solid #eee;
+    }
+
+    .dropdown-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .dropdown-menu li a {
+        padding: 12px 30px;
+        font-weight: 400; /* Lighter font for sub-items */
+        font-size: 0.95rem;
+        color: var(--text-color);
+    }
+
+    .dropdown-menu li a:hover {
+        background-color: #e6e6e6;
+        color: var(--primary-color);
+    }
+
+
     /* Info Bar */
     .info-bar {
       background-color: #f8f9fa;
       padding: 10px 0;
       font-size: 0.8rem;
       text-align: center;
-      margin-top: 70px;
+      /* Margin removed, relies on JS for correct placement */
     }
 
     .info-bar .container {
@@ -614,6 +678,14 @@
     .brand-slide img {
       max-width: 100%;
       max-height: 60px;
+      filter: grayscale(100%); /* Brands look better muted */
+      opacity: 0.7;
+      transition: var(--transition);
+    }
+
+    .brand-slide img:hover {
+        filter: grayscale(0);
+        opacity: 1;
     }
 
     @keyframes slide {
@@ -637,26 +709,35 @@
       grid-template-columns: 1fr;
       gap: 30px;
       margin-bottom: 40px;
+      text-align: center; /* Center content on mobile */
+    }
+    
+    .footer-column {
+        padding: 0 20px;
     }
 
     .footer-column h3 {
       margin-bottom: 15px;
       position: relative;
       padding-bottom: 10px;
+      text-align: center; /* Center heading on mobile */
     }
 
     .footer-column h3::after {
       content: '';
       position: absolute;
       bottom: 0;
-      left: 0;
+      left: 50%;
+      transform: translateX(-50%); /* Center underline on mobile */
       width: 40px;
       height: 2px;
       background-color: var(--secondary-color);
     }
-
+    
     .footer-column ul {
-      list-style: none;
+        list-style: none;
+        padding: 0;
+        text-align: center; /* Center list items on mobile */
     }
 
     .footer-column ul li {
@@ -679,6 +760,10 @@
       color: var(--secondary-color);
     }
 
+    .footer-logo {
+        text-align: center;
+    }
+    
     .footer-logo img {
       height: 40px;
       margin-bottom: 15px;
@@ -690,43 +775,51 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Floating Buttons */
-    .floating-buttons {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    /* Floating Buttons - Existing Styles are fine for mobile */
+
+    /* Gallery Page Specific Styles (Ensure they are responsive) */
+    .gallery-hero {
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 80px 0 40px;
+        text-align: center;
     }
 
-    .whatsapp-btn, .email-btn {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-size: 1.2rem;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      text-decoration: none;
+    .gallery-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .gallery-hero p {
+        font-size: 1rem;
     }
 
-    .whatsapp-btn {
-      background-color: #25D366;
+    .gallery-section {
+        padding: 60px 0;
     }
 
-    .email-btn {
-      background-color: var(--primary-color);
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Better responsive grid */
+        gap: 20px;
     }
 
-    .whatsapp-btn:hover, .email-btn:hover {
-      transform: translateY(-3px);
+    .gallery-item {
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
     }
-
+    
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .gallery-item img:hover {
+        transform: scale(1.05);
+    }
+    
     /* Desktop Styles */
     @media (min-width: 768px) {
       .section-title {
@@ -743,10 +836,19 @@
         flex: 1;
       }
       
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+
       .hero-form {
-        flex: 0 0 350px;
+        flex: 0 0 380px; /* Slightly wider form */
       }
       
+      .name-fields,
+      .address-fields {
+        flex-direction: row;
+      }
+
       .services-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -759,13 +861,43 @@
         flex-direction: row;
         align-items: center;
       }
+
+      .about-text, .about-image {
+        flex: 1;
+      }
+
+      .about-text ul li {
+        margin-bottom: 15px;
+      }
       
       .contact-content {
         flex-direction: row;
       }
+
+      .contact-info, .contact-form {
+        flex: 1;
+      }
       
       .footer-content {
         grid-template-columns: repeat(2, 1fr);
+        text-align: left;
+      }
+      
+      .footer-column h3 {
+        text-align: left;
+      }
+      
+      .footer-column h3::after {
+        left: 0;
+        transform: translateX(0);
+      }
+      
+      .footer-column ul {
+        text-align: left;
+      }
+      
+      .footer-logo {
+        text-align: left;
       }
     }
 
@@ -798,14 +930,17 @@
       .nav ul li {
         margin: 0 15px;
         border-bottom: none;
+        text-align: left;
       }
       
       .nav ul li a {
         padding: 0;
+        color: var(--dark-color);
       }
       
       .nav ul li a:hover {
         background-color: transparent;
+        color: var(--secondary-color);
       }
       
       .mobile-menu-btn {
@@ -833,4 +968,68 @@
         transform: translateY(-50%);
         color: var(--text-light);
       }
-    }
+
+      /* Desktop Dropdown Styles */
+      .dropdown {
+        position: relative;
+      }
+      
+      /* OVERRIDE: Desktop dropdown menu must be hidden by default */
+      .dropdown-menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          min-width: 180px;
+          background-color: var(--white);
+          box-shadow: var(--shadow);
+          border-radius: 4px;
+          z-index: 10;
+          text-align: left;
+          /* Remove mobile class 'active' state on desktop for cleaner code */
+      }
+      
+      /* Use CSS hover for desktop dropdowns */
+      .dropdown:hover .dropdown-menu {
+          display: block;
+      }
+
+      .dropdown-menu li {
+          border-bottom: 1px solid #eee;
+      }
+
+      .dropdown-menu li a {
+          padding: 10px 15px;
+          white-space: nowrap;
+      }
+
+      .dropdown-menu li a:hover {
+          background-color: var(--light-color);
+      }
+
+    } 
+    /* Gallery Page Specific Styles (Ensure they are responsive) */
+.gallery-section {
+    padding: 60px 0;
+}
+
+.gallery-grid {
+    display: grid;
+    /* This creates a fluid grid: columns will repeat automatically, 
+       maintaining a minimum width of 250px per column. */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 20px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
