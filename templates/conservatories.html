@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conservatories Gallery | Affordable Glazing Systems</title>
+  <meta name="description" content="View our gallery of stunning, bespoke conservatories and glass extensions installed in Hackbridge.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="canonical" href="https://www.affordableglazingsystems.co.uk/conservatories">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="{{ url_for('index') }}" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Affordable Glazing Systems Logo">
+            </a>
+            <div class="search-bar" style="display: none;">
+                <input type="text" placeholder="Search for home improvement products">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="header-right">
+                <a href="tel:07532721934" class="phone-link">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>07532721934</span>
+                </a>
+                <a href="{{ url_for('index') }}#contact" class="btn btn-primary btn-sm">Get a Price</a>
+                <div class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="{{ url_for('index') }}#home">Home</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('index') }}#products" style="color: var(--secondary-color);">Products <i class="fas fa-caret-down"></i></a>
+                    <ul>
+                        <li><a href="{{ url_for('windows') }}">Windows</a></li>
+                        <li><a href="{{ url_for('doors') }}">Doors</a></li>
+                        <li><a href="{{ url_for('conservatories') }}" style="background-color: rgba(230, 126, 34, 0.8);">Conservatories</a></li>
+                        <li><a href="{{ url_for('rooflights') }}">Roof Lights</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('index') }}#services">Services</a></li>
+                <li><a href="{{ url_for('index') }}#about">About Us</a></li>
+                <li><a href="{{ url_for('index') }}#testimonials">Testimonials</a></li>
+                <li><a href="{{ url_for('index') }}#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="gallery-hero">
+        <div class="container">
+            <h1>Our Conservatories Gallery</h1>
+            <p>See how we have created beautiful, bright, and insulated extra living spaces for our clients.</p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">New Living Spaces and Extensions</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="{{ url_for('static', filename='images/conservatories/conservatory-g1.jpg') }}" alt="Conservatory Installation Example 1"></div>
+                <div class="gallery-item"><img src="{{ url_for('static', filename='images/conservatories/conservatory-g2.jpg') }}" alt="Conservatory Installation Example 2"></div>
+                <div class="gallery-item"><img src="{{ url_for('static', filename='images/conservatories/conservatory-g3.jpg') }}" alt="Conservatory Installation Example 3"></div>
+                <div class="gallery-item"><img src="{{ url_for('static', filename='images/conservatories/conservatory-g4.jpg') }}" alt="Conservatory Installation Example 4"></div>
+                <div class="gallery-item"><img src="{{ url_for('static', filename='images/conservatories/conservatory-g5.jpg') }}" alt="Conservatory Installation Example 5"></div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="{{ url_for('index') }}#contact" class="btn btn-primary">Start Planning Your Conservatory</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Affordable Glazing Systems Logo">
+                    </div>
+                    <p>Your trusted partner for premium windows and doors in Hackbridge and surrounding areas.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{{ url_for('index') }}#home">Home</a></li>
+                        <li><a href="{{ url_for('index') }}#services">Services</a></li>
+                        <li><a href="{{ url_for('index') }}#products">Products</a></li>
+                        <li><a href="{{ url_for('index') }}#about">About Us</a></li>
+                        <li><a href="{{ url_for('index') }}#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Product Galleries</h3>
+                    <ul>
+                        <li><a href="{{ url_for('windows') }}">Windows</a></li>
+                        <li><a href="{{ url_for('doors') }}">Doors</a></li>
+                        <li><a href="{{ url_for('conservatories') }}">Conservatories</a></li>
+                        <li><a href="{{ url_for('rooflights') }}">Roof Lights</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-phone-alt"></i> 07532721934</li>
+                        <li><i class="fas fa-envelope"></i> affordableglazingsys@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Unit 7, Sutton Business Park, Hackbridge, SM6 7AH</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Affordable Glazing Systems. All rights reserved. | <a href="#" style="color: #aaa;">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-buttons">
+        <a href="https://wa.me/447532721934" class="whatsapp-btn" target="_blank" aria-label="WhatsApp Us">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:affordableglazingsys@gmail.com" class="email-btn" aria-label="Email Us">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

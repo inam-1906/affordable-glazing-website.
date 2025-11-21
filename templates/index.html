@@ -33,28 +33,25 @@
     gtag('config', 'G-XXXXXXXXXX'); // replace with your Google Analytics ID
   </script>
 
-  <style>
-  
-  </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <div class="logo">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Premium Windows & Doors">
-            </div>
+            <a href="#home" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Affordable Glazing Systems Logo">
+            </a>
             <div class="search-bar" style="display: none;">
                 <input type="text" placeholder="Search for home improvement products">
                 <i class="fas fa-search"></i>
             </div>
             <div class="header-right">
                 <a href="tel:07532721934" class="phone-link">
-                    <i class="fas fa-phone"></i>
+                    <i class="fas fa-phone-alt"></i>
                     <span>07532721934</span>
                 </a>
-                <a href="#home" class="btn btn-primary">Get a Price</a>
+                <a href="#home" class="btn btn-primary btn-sm">Get a Price</a>
                 <div class="mobile-menu-btn">
                     <span></span>
                     <span></span>
@@ -64,22 +61,30 @@
         </div>
         <nav class="nav">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="{{ url_for('index') }}#home">Home</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('index') }}#products">Products <i class="fas fa-caret-down"></i></a>
+                    <ul>
+                        <li><a href="{{ url_for('windows') }}">Windows</a></li>
+                        <li><a href="{{ url_for('doors') }}">Doors</a></li>
+                        <li><a href="{{ url_for('conservatories') }}">Conservatories</a></li>
+                        <li><a href="{{ url_for('rooflights') }}">Roof Lights</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('index') }}#services">Services</a></li>
+                <li><a href="{{ url_for('index') }}#about">About Us</a></li>
+                <li><a href="{{ url_for('index') }}#testimonials">Testimonials</a></li>
+                <li><a href="{{ url_for('index') }}#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="info-bar">
         <div class="container">
-            <span><i class="fas fa-shield-alt"></i> 10 year guarantee</span>
+            <span><i class="fas fa-shield-alt"></i> 10 Year Guarantee</span>
             <span><i class="fas fa-industry"></i> Made in Britain</span>
-            <span>20+ years in business</span>
-            <span>We'll match uPVC window prices £</span>
+            <span><i class="fas fa-history"></i> 20+ Years in Business</span>
+            <span><i class="fas fa-pound-sign"></i> Price Match Promise</span>
         </div>
     </div>
 
@@ -87,18 +92,20 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-text">
-                    <h1>Premium Windows and Doors</h1>
-                    <h3>Transform your home with elegance and efficiency.</h3>
+                    <h1>Premium Windows and Doors for Your Home</h1>
+                    <h3>Transform your Hackbridge home with elegant, secure, and energy-efficient glazing.</h3>
+                    <a href="#products" class="btn btn-secondary" style="margin-top: 20px;">View Products</a>
                 </div>
                 <div class="hero-form">
-                    <h2>Get a Price</h2>
-                    <p>Up to off when you get a free no-obligation quote.</p>
+                    <h2>Get Your Free Price</h2>
+                    <p>Receive a free, no-obligation quote and discover our current promotions.</p>
                     <form action="{{ url_for('send_enquiry') }}" method="POST">
                         <select name="product" required>
                             <option value="">Select a product *</option>
                             <option value="Windows">Windows</option>
                             <option value="Doors">Doors</option>
                             <option value="Conservatories">Conservatories</option>
+                            <option value="Roof Lights">Roof Lights</option>
                             <option value="Roofline">Roofline</option>
                             <option value="Porches">Porches</option>
                             <option value="Blinds">Blinds</option>
@@ -114,7 +121,7 @@
                             <input type="text" name="house_number" placeholder="House number/name *" required>
                             <input type="text" name="postcode" placeholder="Postcode *" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Continue</button>
+                        <button type="submit" class="btn btn-primary">Get My Price</button>
                     </form>
                     <small>By providing your details you agree to being contacted under the terms of our privacy policy.</small>
                 </div>
@@ -124,35 +131,35 @@
 
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Our Services</h2>
+            <h2 class="section-title">Our Expert Glazing Services</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-wrench"></i>
                     </div>
                     <h3>Window Installation</h3>
                     <p>Professional installation of uPVC, timber, and aluminium windows tailored to your home's needs.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-door-open"></i>
+                        <i class="fas fa-door-closed"></i>
                     </div>
                     <h3>Door Installation</h3>
-                    <p>Secure and stylish front, back, and patio doors to enhance your home's security and appeal.</p>
+                    <p>Secure and stylish front, back, and patio doors to enhance your home's security and curb appeal.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-solar-panel"></i>
                     </div>
-                    <h3>Repairs & Maintenance</h3>
-                    <p>Expert repair services for all window and door types to keep your home in perfect condition.</p>
+                    <h3>Conservatories</h3>
+                    <p>Design and build of stunning, energy-efficient conservatories for extra living space.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-leaf"></i>
+                        <i class="fas fa-bolt"></i>
                     </div>
                     <h3>Energy Efficiency</h3>
-                    <p>Reduce your energy bills with our A-rated energy-efficient windows and doors.</p>
+                    <p>Reduce your energy bills with our A-rated double and triple-glazing solutions.</p>
                 </div>
             </div>
         </div>
@@ -160,28 +167,37 @@
 
     <section id="products" class="products">
         <div class="container">
-            <h2 class="section-title">Our Products</h2>
+            <h2 class="section-title">Featured Products</h2>
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-image">
                         <img src="{{ url_for('static', filename='images/window1.png') }}" alt="uPVC Windows">
                     </div>
-                    <h3>uPVC Windows</h3>
-                    <p>Durable, low-maintenance windows available in a variety of styles and finishes.</p>
+                    <div class="product-card-body">
+                        <h3>uPVC Windows</h3>
+                        <p>Durable, highly insulated, and low-maintenance windows available in a variety of styles.</p>
+                        <a href="{{ url_for('windows') }}" class="btn btn-secondary">See Gallery</a>
+                    </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <img src="{{ url_for('static', filename='images/door1.png') }}" alt="Composite Doors">
                     </div>
-                    <h3>Composite Doors</h3>
-                    <p>Secure, stylish, and energy-efficient front doors with enhanced security features.</p>
+                    <div class="product-card-body">
+                        <h3>Composite Doors</h3>
+                        <p>Offering superior security, thermal performance, and beautiful aesthetic appeal.</p>
+                        <a href="{{ url_for('doors') }}" class="btn btn-secondary">See Gallery</a>
+                    </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
                         <img src="{{ url_for('static', filename='images/bi-fold.png') }}" alt="Bi-Fold Doors">
                     </div>
-                    <h3>Bi-Fold Doors</h3>
-                    <p>Create a seamless transition between indoor and outdoor living spaces.</p>
+                    <div class="product-card-body">
+                        <h3>Bi-Fold Doors</h3>
+                        <p>Seamlessly connect your indoor and outdoor living areas with expansive glass panels.</p>
+                        <a href="{{ url_for('doors') }}" class="btn btn-secondary">See Gallery</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -191,18 +207,18 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2 class="section-title">Why Choose Us?</h2>
-                    <p>With over 20 years of experience in the window and door industry, we pride ourselves on delivering exceptional quality products and installation services.</p>
+                    <h2 class="section-title">Why Choose Affordable Glazing Systems?</h2>
+                    <p>With over **20 years of experience** in the window and door industry, we pride ourselves on delivering exceptional quality products and installation services across Hackbridge.</p>
+                    <p>We are committed to honest pricing, outstanding customer service, and ensuring your home is secure and energy-efficient.</p>
                     <ul>
-                        <li><i class="fas fa-check"></i> 10-year product guarantee</li>
-                        <li><i class="fas fa-check"></i> Expert installation teams</li>
-                        <li><i class="fas fa-check"></i> Competitive pricing</li>
-                        <li><i class="fas fa-check"></i> Free, no-obligation quotes</li>
-                        <li><i class="fas fa-check"></i> Finance options available</li>
+                        <li><i class="fas fa-check-circle"></i> **10-Year Insurance-Backed Guarantee** on all installations.</li>
+                        <li><i class="fas fa-check-circle"></i> Highly experienced, certified installation teams.</li>
+                        <li><i class="fas fa-check-circle"></i> Competitive and transparent pricing with no hidden fees.</li>
+                        <li><i class="fas fa-check-circle"></i> Finance options available to spread the cost.</li>
                     </ul>
                 </div>
                 <div class="about-image">
-                    <img src="{{ url_for('static', filename='images/about-image.jpeg') }}" alt="Our Team">
+                    <img src="{{ url_for('static', filename='images/about-image.jpeg') }}" alt="Our Professional Installation Team">
                 </div>
             </div>
         </div>
@@ -210,11 +226,11 @@
 
     <section id="testimonials" class="testimonials">
         <div class="container">
-            <h2 class="section-title">What Our Customers Say</h2>
+            <h2 class="section-title">What Our Valued Customers Say</h2>
             <div class="testimonials-slider">
                 <div class="testimonial active">
                     <div class="testimonial-content">
-                        <p>"The team did an excellent job replacing all our windows. Professional, clean, and efficient. Highly recommended!"</p>
+                        <p>"The team did an excellent job replacing all our windows. Professional, clean, and efficient. The quality is noticeably better than our old units. Highly recommended!"</p>
                         <div class="testimonial-author">
                             <h4>Sarah Johnson</h4>
                             <span>Manchester</span>
@@ -223,7 +239,7 @@
                 </div>
                 <div class="testimonial">
                     <div class="testimonial-content">
-                        <p>"Our new front door has completely transformed the look of our home. The installation was quick and the quality is outstanding."</p>
+                        <p>"Our new composite front door has completely transformed the look of our home. The installation was quick, clean, and the quality is simply outstanding. Great service!"</p>
                         <div class="testimonial-author">
                             <h4>David Wilson</h4>
                             <span>Leeds</span>
@@ -232,7 +248,7 @@
                 </div>
                 <div class="testimonial">
                     <div class="testimonial-content">
-                        <p>"From the initial quote to the final installation, the service was exceptional. We couldn't be happier with our new bi-fold doors."</p>
+                        <p>"From the initial quote to the final installation, the service was exceptional. We couldn't be happier with our new bi-fold doors—they look fantastic."</p>
                         <div class="testimonial-author">
                             <h4>Emma Thompson</h4>
                             <span>Liverpool</span>
@@ -250,50 +266,51 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get Your Free Quote</h2>
+            <h2 class="section-title">Discuss Your Project Today</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
+                    <h3>Get in Touch</h3>
                     <div class="contact-item">
-                        <i class="fas fa-phone"></i>
+                        <i class="fas fa-phone-alt"></i>
                         <div>
-                            <h4>Phone</h4>
+                            <h4>Call Us Direct</h4>
                             <p>07532721934</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
-                            <h4>Email</h4>
+                            <h4>Email Us</h4>
                             <p>affordableglazingsys@gmail.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <h4>Address</h4>
+                            <h4>Visit Our Office</h4>
                             <p>Unit 7, Sutton Business Park, Restmorway, Hackbridge, SM6 7AH</p>
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="contact-form">
+                    <h2 class="section-title">Send a Message</h2>
                     <form action="{{ url_for('send_enquiry') }}" method="POST">
                         <div class="form-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="text" name="name" placeholder="Your Name *" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
+                            <input type="email" name="email" placeholder="Your Email *" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+                            <input type="tel" name="phone" placeholder="Your Phone Number *" required>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                            <textarea name="message" placeholder="Your Message / Project Details" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Send Enquiry</button>
                     </form>
@@ -304,36 +321,18 @@
 
     <section class="brands">
         <div class="container">
-            <h2 class="section-title">Trusted Brands</h2>
+            <h2 class="section-title">Proud Partners with Trusted Brands</h2>
             <div class="brands-slider">
                 <div class="brand-track">
-                    <div class="brand-slide">
-                        <img src="{{ url_for('static', filename='images/brands/brand1.jpeg') }}" alt="Brand 1">
-                    </div>
-                    <div class="brand-slide">
-                        <img src="{{ url_for('static', filename='images/brands/brand2.jpeg') }}" alt="Brand 2">
-                    </div>
-                    <div class="brand-slide">
-                        <img src="{{ url_for('static', filename='images/brands/brand3.jpeg') }}" alt="Brand 3">
-                    </div>
-                    <div class="brand-slide">
-                        <img src="{{ url_for('static', filename='images/brands/brand4.jpeg') }}" alt="Brand 4">
-                    </div>
-                    <div class="brand-slide">
-                        <img src="{{ url_for('static', filename='images/brands/brand5.jpeg') }}" alt="Brand 5">
-                    </div>
-                    <div class="brand-slide">
-                        <img src="{{ url_for('static', filename='images/brands/brand6.jpeg') }}" alt="Brand 6">
-                    </div>
-                    <div class="brand-slide">
-                        <img src="{{ url_for('static', filename='images/brands/brand1.jpeg') }}" alt="Brand 1">
-                    </div>
-                    <div class="brand-slide">
-                        <img src="{{ url_for('static', filename='images/brands/brand2.jpeg') }}" alt="Brand 2">
-                    </div>
-                    <div class="brand-slide">
-                        <img src="{{ url_for('static', filename='images/brands/brand3.jpeg') }}" alt="Brand 3">
-                    </div>
+                    <div class="brand-slide"><img src="{{ url_for('static', filename='images/brands/brand1.jpeg') }}" alt="Brand 1"></div>
+                    <div class="brand-slide"><img src="{{ url_for('static', filename='images/brands/brand2.jpeg') }}" alt="Brand 2"></div>
+                    <div class="brand-slide"><img src="{{ url_for('static', filename='images/brands/brand3.jpeg') }}" alt="Brand 3"></div>
+                    <div class="brand-slide"><img src="{{ url_for('static', filename='images/brands/brand4.jpeg') }}" alt="Brand 4"></div>
+                    <div class="brand-slide"><img src="{{ url_for('static', filename='images/brands/brand5.jpeg') }}" alt="Brand 5"></div>
+                    <div class="brand-slide"><img src="{{ url_for('static', filename='images/brands/brand6.jpeg') }}" alt="Brand 6"></div>
+                    <div class="brand-slide"><img src="{{ url_for('static', filename='images/brands/brand1.jpeg') }}" alt="Brand 1"></div>
+                    <div class="brand-slide"><img src="{{ url_for('static', filename='images/brands/brand2.jpeg') }}" alt="Brand 2"></div>
+                    <div class="brand-slide"><img src="{{ url_for('static', filename='images/brands/brand3.jpeg') }}" alt="Brand 3"></div>
                 </div>
             </div>
         </div>
@@ -344,139 +343,53 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <div class="footer-logo">
-                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Premium Windows & Doors">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Affordable Glazing Systems Logo">
                     </div>
-                    <p>Your trusted partner for premium windows and doors in Hackbridge and surrounding areas.</p>
+                    <p>Your trusted partner for premium windows and doors in Hackbridge and surrounding areas. Quality, reliability, and security guaranteed.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="{{ url_for('index') }}#home">Home</a></li>
+                        <li><a href="{{ url_for('index') }}#services">Services</a></li>
+                        <li><a href="{{ url_for('index') }}#products">Products</a></li>
+                        <li><a href="{{ url_for('index') }}#about">About Us</a></li>
+                        <li><a href="{{ url_for('index') }}#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Our Services</h3>
+                    <h3>Product Galleries</h3>
                     <ul>
-                        <li><a href="#">Window Installation</a></li>
-                        <li><a href="#">Door Installation</a></li>
-                        <li><a href="#">Conservatories</a></li>
-                        <li><a href="#">Repairs & Maintenance</a></li>
-                        <li><a href="#">Energy Efficiency</a></li>
+                        <li><a href="{{ url_for('windows') }}">Windows</a></li>
+                        <li><a href="{{ url_for('doors') }}">Doors</a></li>
+                        <li><a href="{{ url_for('conservatories') }}">Conservatories</a></li>
+                        <li><a href="{{ url_for('rooflights') }}">Roof Lights</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Contact Us</h3>
+                    <h3>Contact Info</h3>
                     <ul>
-                        <li><i class="fas fa-phone"></i> 07532721934</li>
+                        <li><i class="fas fa-phone-alt"></i> 07532721934</li>
                         <li><i class="fas fa-envelope"></i> affordableglazingsys@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Unit 7, Sutton Business Park, Restmorway, Hackbridge, SM6 7AH</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Unit 7, Sutton Business Park, Hackbridge, SM6 7AH</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Affordable Glazing Systems. All rights reserved.</p>
+                <p>&copy; 2024 Affordable Glazing Systems. All rights reserved. | <a href="#" style="color: #aaa;">Privacy Policy</a></p>
             </div>
         </div>
     </footer>
 
     <div class="floating-buttons">
-        <a href="https://wa.me/447532721934" class="whatsapp-btn" target="_blank">
+        <a href="https://wa.me/447532721934" class="whatsapp-btn" target="_blank" aria-label="WhatsApp Us">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="mailto:affordableglazingsys@gmail.com" class="email-btn">
+        <a href="mailto:affordableglazingsys@gmail.com" class="email-btn" aria-label="Email Us">
             <i class="fas fa-envelope"></i>
         </a>
     </div>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const nav = document.querySelector('.nav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            
-            // Animate hamburger icon
-            const spans = mobileMenuBtn.querySelectorAll('span');
-            if (nav.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
-
-        // Testimonial Slider
-        const testimonials = document.querySelectorAll('.testimonial');
-        const dots = document.querySelectorAll('.dot');
-        let currentSlide = 0;
-
-        function showSlide(n) {
-            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            currentSlide = (n + testimonials.length) % testimonials.length;
-            
-            testimonials[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-        }
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-            });
-        });
-
-        // Auto slide testimonials
-        setInterval(() => {
-            showSlide(currentSlide + 1);
-        }, 5000);
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.padding = '10px 0';
-                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.padding = '15px 0';
-                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (nav.classList.contains('active')) {
-                        nav.classList.remove('active');
-                        const spans = mobileMenuBtn.querySelectorAll('span');
-                        spans[0].style.transform = 'none';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'none';
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
